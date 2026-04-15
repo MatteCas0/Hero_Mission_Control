@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Hero } from '../../Models/Hero-model';
 import { CommonModule } from '@angular/common';
 import { HeroCard } from '../hero-card/hero-card';
+import { HeroEdit } from "../hero-edit/hero-edit";
 
 @Component({
   selector: 'app-hero-card-list',
-  imports: [CommonModule, HeroCard],
+  imports: [CommonModule, HeroCard, HeroEdit],
   templateUrl: './hero-card-list.html',
   styleUrl: './hero-card-list.css',
 })
@@ -42,12 +43,16 @@ export class HeroCardList {
       "completata": false
     }
   ];
-
+  
   markAsDone(hero: Hero) : void {
     hero.completata = true;
   }
-
+  
   get totalCompleted(): number{
     return this.heroes.filter(h => h.completata).length;
+  }
+
+  aggiungiHero($event: Hero) {
+    this.heroes.push($event);
   }
 }

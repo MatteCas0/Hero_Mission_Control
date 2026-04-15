@@ -4,7 +4,7 @@ import { HeroCardList } from './Components/hero-card-list/hero-card-list';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeroCardList],
+  imports: [HeroCardList],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
