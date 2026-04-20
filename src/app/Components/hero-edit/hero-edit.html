@@ -1,9 +1,10 @@
-<input [(ngModel)]="hero.id"
-    type="text" placeholder="ID">
+<!-- <input [(ngModel)]="hero.id"
+    type="text" placeholder="ID"> -->
 <input [(ngModel)]="hero.nome"
     type="text" placeholder="Nome">
 <input [(ngModel)]="hero.potere"
     type="text" placeholder="Potere">
 <button (click)="salvaHero()">Salva</button>
+<button (click)="reset()">Reset</button>
 
 {{ hero | json }}

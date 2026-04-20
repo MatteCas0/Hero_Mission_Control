@@ -11,15 +11,24 @@ import { CommonModule } from '@angular/common';
 })
 export class HeroEdit {
   @Input() hero: Hero = {
-    id:-1,
-    nome:"",
-    potere:"",
+    id: -1,
+    nome: '',
+    potere: '',
     completata: false
-  }
+  };
 
   @Output() onSalva = new EventEmitter<Hero>();
 
   salvaHero() {
     this.onSalva.emit(this.hero);
+  }
+
+  reset() {
+    this.hero = {
+      id:-1,
+      nome:"",
+      potere:"",
+      completata: false
+    }
   }
 }

@@ -4,9 +4,13 @@
 
 *ngFor="let h of heroes"
 [hero]="h"
-(onMissionDone)="markAsDone($event)">
+(onMissionDone)="markAsDone($event)"
+(click)="heroSelezionato(h)">
 </app-hero-card>
 </div>
 <p>Missioni completate: {{ totalCompleted }}</p>
 
-<app-hero-edit (onSalva)="aggiungiHero($event)"></app-hero-edit>
+<app-hero-edit 
+[hero]="heroSelected"
+(onSalva)="aggiungiHero($event)">
+</app-hero-edit>

@@ -11,6 +11,9 @@ import { HeroEdit } from "../hero-edit/hero-edit";
   styleUrl: './hero-card-list.css',
 })
 export class HeroCardList {
+
+  heroSelected: Hero = {} as Hero;
+
   heroes: Hero[] = [
     {
       "id": 1,                                                                              
@@ -53,6 +56,20 @@ export class HeroCardList {
   }
 
   aggiungiHero($event: Hero) {
-    this.heroes.push($event);
+    const heroEsistente = this.heroes.findIndex(h => h.id === $event.id);
+    if(heroEsistente !== -1){
+      this.heroes[heroEsistente] = $event;
+    } else {
+      $event.id = this.heroes.length + 1;
+      this.heroes.push($event);
+    }
+
+    this.heroSelected = {} as Hero;
   }
+
+  heroSelezionato(hero: Hero){
+    this.heroSelected = { ...hero };
+  }
+
+
 }
