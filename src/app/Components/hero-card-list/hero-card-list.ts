@@ -57,9 +57,11 @@ export class HeroCardList {
 
   aggiungiHero($event: Hero) {
     const heroEsistente = this.heroes.findIndex(h => h.id === $event.id);
-    if(heroEsistente !== -1){
+    if($event.nome === '' || $event.potere === '' || $event.nome === undefined || $event.potere === undefined){
+    alert('Compila tutti i campi!');
+    } else if(heroEsistente !== -1){
       this.heroes[heroEsistente] = $event;
-    } else {
+    }else {
       $event.id = this.heroes.length + 1;
       this.heroes.push($event);
     }

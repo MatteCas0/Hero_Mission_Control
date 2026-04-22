@@ -24,11 +24,6 @@ export class HeroEdit {
   }
 
   reset() {
-    this.hero = {
-      id:-1,
-      nome:"",
-      potere:"",
-      completata: false
-    }
+    this.hero = {} as Hero;
   }
 }
