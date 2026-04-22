@@ -48,7 +48,7 @@ export class HeroCardList {
   ];
   
   markAsDone(hero: Hero) : void {
-    hero.completata = true;
+    hero.completata = !hero.completata;
   }
   
   get totalCompleted(): number{

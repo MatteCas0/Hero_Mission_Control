@@ -2,7 +2,16 @@
 : 'white'">
 <h3>{{ hero.nome }}</h3>
 <p>Potere: {{ hero.potere }}</p>
-<button (click)="notifyParent()" [disabled]="hero.completata">
-Missione Compiuta
+<button 
+class="{{ hero.completata ? 'nuova-missione' : 'missione-completata' }}"
+(click)="notifyParent()"
+>
+{{ hero.completata ? 'Nuova missione' : 'Missione completata' }}
+</button>
+<br>
+<button 
+class="modifica"
+(click)="modificaHero()">
+    modifica
 </button>
 </div>

@@ -1,0 +1,53 @@
+.card{
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    width: 450px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.missione-completata {
+    background-color: #1c632d;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.nuova-missione {
+    background-color: #6e1a21;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.modifica {
+    background-color: #5541c4;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 200px;
+    border-radius: 10px;
+}

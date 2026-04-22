@@ -10,12 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './hero-edit.css',
 })
 export class HeroEdit {
-  @Input() hero: Hero = {
-    id: -1,
-    nome: '',
-    potere: '',
-    completata: false
-  };
+  @Input() hero: Hero = {} as Hero;
 
   @Output() onSalva = new EventEmitter<Hero>();
 
