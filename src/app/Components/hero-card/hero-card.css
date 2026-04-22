@@ -2,13 +2,13 @@
     border: 1px solid black;
     padding: 10px;
     margin: 10px;
-    width: 450px;
+    width: 400px;
     text-align: center;
     border-radius: 10px;
 }
 
 .missione-completata {
-    background-color: #1c632d;
+    background-color: #0e6d25;
     color: #ffffff;
     border: none;
     padding: 10px 20px;
@@ -23,7 +23,7 @@
 }
 
 .nuova-missione {
-    background-color: #6e1a21;
+    background-color: #9b101b;
     color: #ffffff;
     border: none;
     padding: 10px 20px;
