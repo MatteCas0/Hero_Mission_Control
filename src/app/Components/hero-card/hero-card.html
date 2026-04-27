@@ -9,9 +9,13 @@ class="{{ hero.completata ? 'nuova-missione' : 'missione-completata' }}"
 {{ hero.completata ? 'Nuova missione' : 'Missione completata' }}
 </button>
 <br>
+
+<!--
 <button 
 class="modifica"
 (click)="modificaHero()">
     modifica
 </button>
+-->
+<a routerLink="/edit/{{ hero.id }}">Hero</a>
 </div>

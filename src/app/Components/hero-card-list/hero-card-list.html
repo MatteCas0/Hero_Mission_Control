@@ -3,16 +3,16 @@
 <app-hero-card 
 class="card-list"
 
-*ngFor="let h of heroes"
+*ngFor="let h of heroList"
 [hero]="h"
-(onMissionDone)="markAsDone($event)"
-(onHeroModified)="heroSelezionato($event)"
 >
 </app-hero-card>
 </div>
 <p>Missioni completate: {{ totalCompleted }}</p>
 
+<!--
 <app-hero-edit 
 [hero]="heroSelected"
 (onSalva)="aggiungiHero($event)">
 </app-hero-edit>
+-->

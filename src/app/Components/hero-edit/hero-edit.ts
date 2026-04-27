@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero } from '../../Models/Hero-model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { HeroService } from '../../services/hero-service';
 
 @Component({
   selector: 'app-hero-edit',
@@ -10,12 +12,20 @@ import { CommonModule } from '@angular/common';
   styleUrl: './hero-edit.css',
 })
 export class HeroEdit {
-  @Input() hero: Hero = {} as Hero;
+  hero: Hero = {} as Hero;
+  heroId: string | null = null;
 
-  @Output() onSalva = new EventEmitter<Hero>();
+  
+
+  constructor(private route: ActivatedRoute, private heroService: HeroService) { }
+
+  ngOnInit() {
+    this.heroId = this.route.snapshot.paramMap.get('id');
+    
+  }
 
   salvaHero() {
-    this.onSalva.emit(this.hero);
+    //this.onSalva.emit(this.hero);
   }
 
   reset() {
