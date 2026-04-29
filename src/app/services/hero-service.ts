@@ -59,10 +59,14 @@ export class HeroService {
     alert('Compila tutti i campi!');
     } else if(heroEsistente !== -1){
       this.heroes[heroEsistente] = $event;
+      return true;
     }else {
       $event.id = this.heroes.length + 1;
       this.heroes.push($event);
+      return true;
     }
+
+    return false;
 
   }
 

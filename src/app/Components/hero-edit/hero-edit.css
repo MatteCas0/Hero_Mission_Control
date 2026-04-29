@@ -1,0 +1,61 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #f5f5f5;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+button{
+    display: block;
+    margin-top: 20px;
+    padding: 20px 40px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+.homeButton {
+    background-color: #015bbd;
+    margin-bottom: 20px;
+}
+
+.saveButton {
+    background-color: #099229;
+}
+
+.resetButton {
+    background-color: #ad0c1c;
+}
+
+input {
+    display: block;
+    margin: 10px auto;
+    padding: 20px 10px;
+    width: 480px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px;
+}

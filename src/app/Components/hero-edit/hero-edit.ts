@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero } from '../../Models/Hero-model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HeroService } from '../../services/hero-service';
 
 @Component({
@@ -17,18 +17,23 @@ export class HeroEdit {
 
   
 
-  constructor(private route: ActivatedRoute, private heroService: HeroService) { }
+  constructor(private route: ActivatedRoute, private router: Router,
+  private heroService: HeroService) { }
 
   ngOnInit() {
     this.heroId = this.route.snapshot.paramMap.get('id');
-    
+    this.hero = this.heroId ? this.heroService.getHero(this.heroId) : {} as Hero; 
   }
 
   salvaHero() {
-    //this.onSalva.emit(this.hero);
+    this.heroService.aggiungiHero(this.hero) ? this.router.navigate(['/']) : null;
   }
 
   reset() {
     this.hero = {} as Hero;
+  }
+
+  home() {
+    this.router.navigate(['/']);
   }
 }

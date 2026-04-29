@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero } from '../../Models/Hero-model';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HeroService } from '../../services/hero-service';
 
 @Component({
   selector: 'app-hero-card',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './hero-card.html',
   styleUrl: './hero-card.css',
 })
@@ -13,7 +13,7 @@ export class HeroCard {
   @Input() hero!: Hero;
 
 
-constructor(private route: ActivatedRoute, 
+  constructor(private route: ActivatedRoute, private router: Router,
   private heroService: HeroService) { }
 
   ngOnInit() {
@@ -30,6 +30,6 @@ constructor(private route: ActivatedRoute,
   }
 
   modificaHero(){
-    this.heroService.aggiungiHero(this.hero);
+    this.router.navigate(['/edit/' + this.hero.id]);
   }
 }

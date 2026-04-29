@@ -1,10 +1,14 @@
-<!-- <input [(ngModel)]="hero.id"
-    type="text" placeholder="ID"> -->
-<input [(ngModel)]="hero.nome"
-    type="text" placeholder="Nome">
-<input [(ngModel)]="hero.potere"
-    type="text" placeholder="Potere">
-<button (click)="salvaHero()">Salva</button>
-<button (click)="reset()">Reset</button>
+<div class="container">
+  <button (click)="home()" class="homeButton">Home</button>
 
-<!-- {{ hero | json }} -->
+  <!-- <input [(ngModel)]="hero.id"
+      type="text" placeholder="ID"> -->
+  <input [(ngModel)]="hero.nome"
+      type="text" placeholder="Nome">
+  <input [(ngModel)]="hero.potere"
+      type="text" placeholder="Potere">
+  <button (click)="salvaHero()" class="saveButton">Salva</button>
+  <button (click)="reset()" class="resetButton">Reset</button>
+
+  <!-- {{ hero | json }} -->
+</div>
