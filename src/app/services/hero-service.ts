@@ -1,11 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Hero } from '../Models/Hero-model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroService {
 
+
+   private apiUrl = 'https://crudcrud.com/api/39a9d9a6153744f69bab082be2958579/hero'; // Sostituisci con la tua API
+
+  constructor(private http: HttpClient) { }
+
+
+
+  get heroesList(): Observable<Hero[]> {
+    return this.http.get<Hero[]>(this.apiUrl);
+  }
+
+
+  /*
   heroes: Hero[] = [
     {
       "id": 1,                                                                              
@@ -43,11 +58,6 @@ export class HeroService {
     hero.completata = !hero.completata;
   }
 
-
-  get heroesList(): Hero[] {
-    return this.heroes;
-  }
-
   
   get totalCompleted(): number{
     return this.heroes.filter(h => h.completata).length;
@@ -78,4 +88,6 @@ export class HeroService {
       return { ...h };
     }
   }
+
+  */
 }

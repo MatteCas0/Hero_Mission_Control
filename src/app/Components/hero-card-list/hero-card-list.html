@@ -1,16 +1,15 @@
 <h1>Mission Control Center</h1>
+<button (click)="goToAddHero()" class="addButton">Aggiungi Hero</button>
+<p class="totMissionCompleted">Missioni completate: {{ totalCompleted }}</p>
 <div class="container">
 <app-hero-card 
 class="card-list"
 
 *ngFor="let h of heroList"
-[hero]="h"
->
+[hero]="h">
 </app-hero-card>
 </div>
-<p>Missioni completate: {{ totalCompleted }}</p>
 
-<button (click)="goToAddHero()">Aggiungi Hero</button>
 
 <!--
 <app-hero-edit 

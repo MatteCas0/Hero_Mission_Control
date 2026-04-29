@@ -26,3 +26,35 @@ h1 {
     margin-left: auto;
     margin-right: auto;
 }
+
+.addButton{
+    display: block;
+    margin-top: 20px;
+    padding: 20px 40px;
+    background-color: #a09500;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+.totMissionCompleted{
+    display: block;
+    margin-top: 20px;
+    padding: 20px 40px;
+    background-color: #015e49;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    font-weight: bold;
+}
