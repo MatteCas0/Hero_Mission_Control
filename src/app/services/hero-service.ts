@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Hero } from '../Models/Hero-model';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class HeroService {
 
 
-   private apiUrl = 'https://crudcrud.com/api/39a9d9a6153744f69bab082be2958579/hero'; // Sostituisci con la tua API
+  private apiUrl = 'https://crudcrud.com/api/1850a7a24589462fb94eab19aedc3912/heroes'; // Sostituisci con la tua API
 
   constructor(private http: HttpClient) { }
 
@@ -19,75 +19,29 @@ export class HeroService {
     return this.http.get<Hero[]>(this.apiUrl);
   }
 
-
-  /*
-  heroes: Hero[] = [
-    {
-      "id": 1,                                                                              
-      "nome": "Superman",
-      "potere": "Super forza e volo",
-      "completata": false
-    },
-    {
-      "id": 2,
-      "nome": "Spider-Man",
-      "potere": "Ragnatele e agilità",
-      "completata": false
-    },
-    {
-      "id": 3,
-      "nome": "Batman",
-      "potere": "Intelligenza e gadgets",
-      "completata": false
-    },
-    {
-      "id": 4,
-      "nome": "Wonder Woman",
-      "potere": "Lasso della verità",
-      "completata": false
-    },
-    {
-      "id": 5,
-      "nome": "Flash",
-      "potere": "Super velocità",
-      "completata": false
-    }
-  ];
-  
-  markAsDone(hero: Hero) : void {
-    hero.completata = !hero.completata;
-  }
-
-  
-  get totalCompleted(): number{
-    return this.heroes.filter(h => h.completata).length;
+  get totalCompleted(): Observable<number>{
+    return this.http.get<Hero[]>(this.apiUrl).pipe(
+      map(heroes => heroes.filter(h => h.completata).length)
+    );
   }
 
   aggiungiHero($event: Hero) {
-    const heroEsistente = this.heroes.findIndex(h => h.id === $event.id);
-    if($event.nome === '' || $event.potere === '' || $event.nome === undefined || $event.potere === undefined){
-    alert('Compila tutti i campi!');
-    } else if(heroEsistente !== -1){
-      this.heroes[heroEsistente] = $event;
-      return true;
-    }else {
-      $event.id = this.heroes.length + 1;
-      this.heroes.push($event);
-      return true;
-    }
-
-    return false;
-
-  }
-
-  getHero(heroId: string | number) {
-    const h = this.heroes.find(h => h.id === +heroId);
-    if (!h) {
-      return {} as Hero;
+    if ($event._id) {
+      // esiste già => update
+      return this.http.put<Hero>(`${this.apiUrl}/${$event._id}`, $event);
     } else {
-      return { ...h };
+      // non esiste => create
+      return this.http.post<Hero>(this.apiUrl, $event);
     }
   }
 
-  */
+  //mark as done
+  markAsDone(hero: Hero) {
+    const updatedHero = { ...hero, completata: true };
+    return this.http.put<Hero>(`${this.apiUrl}/${hero._id}`, updatedHero);
+  }
+
+  getHero(id: string): Observable<Hero> {
+    return this.http.get<Hero>(`${this.apiUrl}/${id}`);
+  }
 }

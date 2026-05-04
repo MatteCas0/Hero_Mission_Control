@@ -22,11 +22,20 @@ export class HeroEdit {
 
   ngOnInit() {
     this.heroId = this.route.snapshot.paramMap.get('id');
-    this.hero = this.heroId ? this.heroService.getHero(this.heroId) : {} as Hero; 
+    console.log(this.heroId);  
+    if (this.heroId && this.heroId !== '-1') {
+      this.heroService.getHero(this.heroId).subscribe(hero => this.hero = hero);
+    } else {
+      this.hero = {} as Hero;
+    }
+
+    //console.log(this.hero);
   }
 
   salvaHero() {
-    this.heroService.aggiungiHero(this.hero) ? this.router.navigate(['/']) : null;
+    this.heroService.aggiungiHero(this.hero).subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 
   reset() {

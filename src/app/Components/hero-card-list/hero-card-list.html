@@ -1,19 +1,14 @@
 <h1>Mission Control Center</h1>
 <button (click)="goToAddHero()" class="addButton">Aggiungi Hero</button>
-<p class="totMissionCompleted">Missioni completate: {{ totalCompleted }}</p>
+<p class="totMissionCompleted">Missioni completate: {{ totalCompleted() }}</p>
 <div class="container">
 <app-hero-card 
 class="card-list"
 
-*ngFor="let h of heroList"
+*ngFor="let h of heroList()"
 [hero]="h">
 </app-hero-card>
 </div>
 
 
-<!--
-<app-hero-edit 
-[hero]="heroSelected"
-(onSalva)="aggiungiHero($event)">
-</app-hero-edit>
--->
+{{ heroList() | json }}

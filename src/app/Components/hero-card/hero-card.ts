@@ -17,12 +17,12 @@ export class HeroCard {
   private heroService: HeroService) { }
 
   ngOnInit() {
-    const heroId = this.route.snapshot.paramMap.get('id');
-    if (!heroId) {
-      //this.hero = {} as Hero;
-    } else {
-      this.hero = this.heroService.getHero(heroId);
+    const heroId = this.route.snapshot.paramMap.get('_id');
+    if (heroId) {
+      this.heroService.getHero(heroId).subscribe(hero => this.hero = hero);
     }
+
+    console.log(this.hero);
   }
 
   notifyParent(){
@@ -30,6 +30,7 @@ export class HeroCard {
   }
 
   modificaHero(){
-    this.router.navigate(['/edit/' + this.hero.id]);
+    this.router.navigate(['/edit/' + this.hero._id]);
   }
+
 }

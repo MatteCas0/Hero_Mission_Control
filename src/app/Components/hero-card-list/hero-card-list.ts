@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Signal, signal } from '@angular/core';
 import { Hero } from '../../Models/Hero-model';
 import { CommonModule } from '@angular/common';
 import { HeroCard } from '../hero-card/hero-card';
 import { HeroEdit } from "../hero-edit/hero-edit";
 import { HeroService } from '../../services/hero-service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-hero-card-list',
@@ -14,16 +16,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HeroCardList {
 
-  heroList: Hero[] = [];
-  totalCompleted: number = 0;
+  heroList: Signal<Hero[]> = signal([]);
+  totalCompleted: Signal<number> = signal(0);
 
   constructor(private router: Router, private heroService: HeroService) {
-    this.heroList = this.heroService.heroesList;
-    this.totalCompleted = this.heroService.totalCompleted;
+    this.heroList = toSignal(this.heroService.heroesList, { initialValue: [] });
+    this.totalCompleted = toSignal(this.heroService.totalCompleted, { initialValue: 0 });
   }
 
   addHero(hero: Hero) {
-    this.heroService.aggiungiHero(hero);
+    this.heroService.aggiungiHero(hero).subscribe(() => {
+      // Dopo aver aggiunto l'eroe, aggiorna la lista degli eroi
+      this.heroList = toSignal(this.heroService.heroesList, { initialValue: [] });
+      this.totalCompleted = toSignal(this.heroService.totalCompleted, { initialValue: 0 });
+    });
   }
 
   goToAddHero() {
